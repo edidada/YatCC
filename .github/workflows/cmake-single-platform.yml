@@ -36,17 +36,28 @@ jobs:
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: score
       run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cd ${{github.workspace}}/build
         cmake --build . --target task1-score
         cmake --build . --target task2-score
         cmake --build . --target task3-score
         cmake --build . --target task4-score
-        cmake --build . --target task4-score
-
+        cmake --build . --target task5-score
