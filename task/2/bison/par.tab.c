@@ -86,10 +86,10 @@
 /* Copy the first part of user declarations.  */
 #line 1 "par.y"
 
+int yylex (void);             
+void yyerror (char const *);
 #include "par.hpp"
 #include <iostream>
-int yylex (void);             
-void yyerror (char const *);	
 
 
 /* Enabling traces.  */
@@ -1696,7 +1696,7 @@ yyreduce:
 #line 282 "par.y"
     {
       delete par::Symtbl::g; 	// 结束符号表作用域
-      (yyval.CompoundStmt) = $block_item_list;
+      (yyval.CompoundStmt) = (yyvsp[(3) - (4)].CompoundStmt);
     ;}
     break;
 

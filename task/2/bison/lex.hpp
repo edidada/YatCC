@@ -1,10 +1,18 @@
 #pragma once
 
-#include "par.hpp"
 #include <string>
 #include <string_view>
 #include <cstdio>
+#include "par.hpp"
 #include "par.tab.h"
+
+#ifndef YYEOF
+#define YYEOF 0
+#endif
+
+#ifndef YYUNDEF
+#define YYUNDEF -1
+#endif
 
 namespace lex {
 

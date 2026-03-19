@@ -281,7 +281,7 @@ compound_statement
     '}'
     {
       delete par::Symtbl::g; 	// 结束符号表作用域
-      $$ = $block_item_list;
+      $$ = $3;
     }
   ;
 
