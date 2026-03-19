@@ -1,5 +1,146 @@
 # Task 4 优化技术实现总结
 
+## Task 4 优化技术示例
+
+本目录包含了Task 4中涉及的主要编译优化技术的简化实现示例，每个示例都可以独立编译运行，无需依赖LLVM库。
+
+## 目录结构
+
+```
+task4_examples/
+├── README.md                           # 本文件
+├── 01_constant_folding.cpp              # 常量折叠优化
+├── 01_constant_folding.md              # 常量折叠详细说明
+├── 02_mem2reg.cpp                    # 内存到寄存器提升
+├── 02_mem2reg.md                    # Mem2Reg详细说明
+├── 03_static_call_counter.cpp          # 静态调用计数器
+└── 03_static_call_counter.md          # 静态调用计数器详细说明
+```
+
+## 优化技术概览
+
+### 1. 常量折叠 (Constant Folding)
+- 文件: `01_constant_folding.cpp`
+- 说明: `01_constant_folding.md`
+- 原理: 在编译时计算常量表达式，替换运行时计算
+- 优势: 减少运行时开销，提高执行速度
+- 编译: `g++ -std=c++17 01_constant_folding.cpp -o constant_folding`
+
+### 2. 内存到寄存器提升 (Memory to Register Promotion)
+- 文件: `02_mem2reg.cpp`
+- 说明: `02_mem2reg.md`
+- 原理: 将栈内存变量提升到SSA形式的寄存器变量
+- 优势: 减少内存访问，为其他优化创造条件
+- 编译: `g++ -std=c++17 02_mem2reg.cpp -o mem2reg`
+
+### 3. 静态调用计数器 (Static Call Counter)
+- 文件: `03_static_call_counter.cpp`
+- 说明: `03_static_call_counter.md`
+- 原理: 在编译时统计函数调用次数
+- 优势: 识别热点函数，指导优化决策
+- 编译: `g++ -std=c++17 03_static_call_counter.cpp -o static_call_counter`
+
+## 快速开始
+
+### 编译所有示例
+```bash
+# 编译常量折叠示例
+g++ -std=c++17 01_constant_folding.cpp -o constant_folding
+
+# 编译Mem2Reg示例
+g++ -std=c++17 02_mem2reg.cpp -o mem2reg
+
+# 编译静态调用计数器示例
+g++ -std=c++17 03_static_call_counter.cpp -o static_call_counter
+```
+
+### 运行示例
+```bash
+# 运行常量折叠
+./constant_folding
+
+# 运行Mem2Reg
+./mem2reg
+
+# 运行静态调用计数器
+./static_call_counter
+```
+
+## 学习路径建议
+
+### 初学者路径
+1. 先阅读每个`.md`文件理解优化原理
+2. 运行对应的`.cpp`文件观察优化过程
+3. 修改代码中的测试用例，观察不同情况下的行为
+4. 尝试添加新的优化场景
+
+### 进阶学习路径
+1. 对比简化实现与LLVM实际实现的差异
+2. 思考如何处理更复杂的情况（如循环、嵌套调用等）
+3. 研究优化之间的相互影响（如常量折叠后的代码如何影响Mem2Reg）
+4. 探索其他相关优化技术
+
+## 与LLVM的对应关系
+
+这些简化示例模拟了LLVM中的真实Pass：
+
+| 简化实现 | LLVM Pass | 说明 |
+|-----------|------------|------|
+| ConstantFolding | `llvm::ConstantFold` | 常量折叠 |
+| Mem2Reg | `llvm::PromoteMemoryToRegister` | 内存到寄存器提升 |
+| StaticCallCounter | `llvm::CallGraph` | 调用图分析 |
+
+## 优化效果对比
+
+### 常量折叠效果
+```
+优化前:  x = 3 + 5 * 2    // 2次运行时计算
+优化后:  x = 13            // 编译时计算完成
+```
+
+### Mem2Reg效果
+```
+优化前:  alloca x; store 10, x; load x, use x    // 内存访问
+优化后:  x_1 = 10; use x_1                      // 寄存器访问
+```
+
+### 静态调用计数器效果
+```
+分析结果: helper函数被调用15次，是热点函数
+优化建议: 考虑内联helper函数或进行性能优化
+```
+
+## 扩展阅读
+
+### 推荐资源
+- [LLVM Language Reference](https://llvm.org/docs/LangRef.html)
+- [SSA Form](https://en.wikipedia.org/wiki/Static_single_assignment_form)
+- [Compiler Optimization](https://en.wikipedia.org/wiki/Compiler_optimization)
+
+### 相关论文
+- "SSA-based Compiler Design" - Ron Cytron et al.
+- "Effective SSA-based Compiler Optimizations" - various authors
+
+## 注意事项
+
+1. 简化假设: 这些示例为了教学目的做了大量简化
+2. 实际复杂性: 真实编译器需要处理更多边界情况
+3. 性能考虑: 实际实现需要考虑编译时间和优化效果的平衡
+4. 正确性保证: 任何优化都必须保证程序语义不变
+
+## 贡献指南
+
+如果你想扩展这些示例：
+
+1. 保持代码风格一致
+2. 添加详细的注释说明
+3. 更新对应的.md文档
+4. 确保代码可以编译运行
+5. 添加新的测试用例
+
+## 许可证
+
+这些示例代码仅供学习使用，可以自由修改和分发。
 ## 项目概述
 
 根据 `https://arcsysu.github.io/YatCC/task4_doc/optimizations/` 网址中涉及的IT开发技术和算法，我在 `task4_examples` 文件夹中创建了三个主要的编译优化技术示例，每个示例都包含可编译运行的C++代码和详细的Markdown文档。
@@ -7,21 +148,21 @@
 ## 已完成的优化技术
 
 ### 1. 常量折叠 (Constant Folding)
-**文件**: `01_constant_folding.cpp` 和 `01_constant_folding.md`
+文件: `01_constant_folding.cpp` 和 `01_constant_folding.md`
 
-**技术要点**:
+技术要点:
 - 在编译时计算常量表达式
 - 支持加减乘除等基本运算
 - 用计算结果替换原始指令
 - 删除已折叠的冗余指令
 
-**实现特点**:
+实现特点:
 - 简化的IR表示（Module, Function, BasicBlock, Instruction）
 - 常量识别和表达式求值
 - 指令替换和删除机制
 - 详细的优化过程输出
 
-**测试结果**:
+测试结果:
 ```
 === 常量折叠优化开始 ===
 处理函数: example
@@ -33,21 +174,21 @@
 ```
 
 ### 2. 内存到寄存器提升 (Memory to Register Promotion)
-**文件**: `02_mem2reg.cpp` 和 `02_mem2reg.md`
+文件: `02_mem2reg.cpp` 和 `02_mem2reg.md`
 
-**技术要点**:
+技术要点:
 - 将栈内存变量提升到SSA形式
 - 插入PHI节点处理控制流汇合
 - 执行SSA重命名消除歧义
 - 删除alloca和相关的load/store指令
 
-**实现特点**:
+实现特点:
 - SSA形式和PHI节点的实现
 - 支配边界的简化处理
 - 版本号栈管理变量版本
 - 控制流图的基本块处理
 
-**测试结果**:
+测试结果:
 ```
 === 内存到寄存器提升优化开始 ===
 处理函数: example
@@ -63,21 +204,21 @@
 ```
 
 ### 3. 静态调用计数器 (Static Call Counter)
-**文件**: `03_static_call_counter.cpp` 和 `03_static_call_counter.md`
+文件: `03_static_call_counter.cpp` 和 `03_static_call_counter.md`
 
-**技术要点**:
+技术要点:
 - 在编译时统计函数调用次数
 - 识别函数调用指令
 - 生成调用统计报告
 - 按调用频率排序输出
 
-**实现特点**:
+实现特点:
 - 函数调用关系分析
 - 调用次数统计和排序
 - 格式化的统计报告输出
 - 支持嵌套调用分析
 
-**测试结果**:
+测试结果:
 ```
 === 静态调用计数分析开始 ===
 分析函数: main
@@ -196,19 +337,19 @@ g++ -std=c++17 03_static_call_counter.cpp -o static_call_counter
 
 ## 技术亮点
 
-1. **SSA形式实现**: 完整实现了SSA形式的核心概念，包括PHI节点和版本管理
-2. **优化过程可视化**: 详细的日志输出，清晰展示优化过程
-3. **模块化设计**: 每个优化都是独立的模块，易于理解和扩展
-4. **教学友好**: 代码注释详细，文档完善，适合学习使用
+1. SSA形式实现: 完整实现了SSA形式的核心概念，包括PHI节点和版本管理
+2. 优化过程可视化: 详细的日志输出，清晰展示优化过程
+3. 模块化设计: 每个优化都是独立的模块，易于理解和扩展
+4. 教学友好: 代码注释详细，文档完善，适合学习使用
 
 ## 扩展可能
 
 这些示例可以进一步扩展：
 
-1. **添加更多优化**: 死代码消除、常量传播、循环优化等
-2. **处理复杂情况**: 循环、嵌套调用、间接调用等
-3. **性能分析**: 添加优化前后的性能对比
-4. **可视化工具**: 生成优化前后的IR对比图
+1. 添加更多优化: 死代码消除、常量传播、循环优化等
+2. 处理复杂情况: 循环、嵌套调用、间接调用等
+3. 性能分析: 添加优化前后的性能对比
+4. 可视化工具: 生成优化前后的IR对比图
 
 ## 总结
 

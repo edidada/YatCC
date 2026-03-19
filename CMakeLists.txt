@@ -19,5 +19,8 @@ find_package(
 # 任务
 add_subdirectory(task)
 
+# Task 4 示例程序
+add_subdirectory(task4_examples)
+
 # 评测
 add_subdirectory(test)
