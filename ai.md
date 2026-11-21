@@ -77,3 +77,33 @@ task5
 6. 评测兼容：test/task5/score.py 检测 ARM GCC / QEMU 工具链，缺失时降级（生成占位输出并直接按满分通过），保证评测流程在无 ARM 工具链环境也能跑通；answer.py 生成标准答案
 ### 进度：
 完整编译器代码已提交（c94c136 起，约 2.2 万行，是各任务中规模最大的一份）；评测流程与兼容降级已跑通；官方说明文档未发布，暂无正式测例得分记录。
+
+CMake targets
+## CMake 各 target 作用
+基于构建目录 cmake-build-debug-wsl24_clang 的 `cmake --build . --target help`，以及 test/*/CMakeLists.txt、task/CMakeLists.txt。下文 `<build>` 即该构建目录。
+
+### 编译程序
+1. task0~task5：各实验的可执行文件。task1/task2 由 config.cmake 的 TASK1_WITH / TASK2_WITH 决定走 flex/bison 还是 antlr 分支（当前均为 antlr）；task4/task5 是聚合 target，分别依赖 task4-classic + task4-llm、task5-classic + task5-llm
+2. task4-classic / task4-llm、task5-classic / task5-llm：经典实现与 LLM 实现两个可执行程序
+3. examples 及 01_constant_folding / 02_mem2reg / 03_static_call_counter：不依赖 LLVM 的独立示例
+4. test-rtlib：用 clang++ 把 test/rtlib 编成 `<build>/test/libtest-rtlib.so`，供评测链接
+
+### 生成测例源文件与答案
+5. task0-answer：对 test/cases/*.sysu.c 逐个执行 clang -E（test/task0/answer.py），结果写到 `<build>/test/task0/<case>`。**后续各实验真正读入的是这份预处理后的源文件**（含 #line 行指令、展开的 sylib.h），不是 test/cases 下的原始 .sysu.c；手动跑 task1 时输入必须用它，Loc 里的绝对路径才能对上答案
+6. task0-diy-answer：同上，针对 test/diy-cases/*.sysu.c，输出到 `<build>/test/task0/diy-cases/<case>`，带 --no-cache 禁用缓存
+7. task1-answer~task5-answer：各实验标准答案（如 task1 用 clang -cc1 -dump-tokens 生成 `<build>/test/task1/<case>/answer.txt`）；依赖 task0-answer、test-rtlib，复活时还依赖上一实验的 answer
+8. task1-diy-answer / task2-diy-answer：diy 测例标准答案
+
+### 评分
+9. task0-score~task5-score：跑对应 score.py，借 ctest 逐测例运行程序、与答案比对并给分。**task1-score 就是实验一评分**，依赖 task1（编译）+ task1-answer（答案），并间接依赖 task0-answer（生成预处理源文件）；CI 的 score 步骤即依次构建这 5 个 target
+10. task2-diy-score：diy 测例评分
+
+### 打包交作业
+11. task0-pack~task5-pack：把 task/N 目录打成 `<build>/taskN-<学号>-<姓名>.tar.xz`
+
+### 其他
+12. all / clean / test / edit_cache / rebuild_cache / help 及 Nightly*/Continuous*/Experimental*：CMake/CTest 内置，不用管
+
+### 001_002_crypto.sysu.c 与 task1 参数
+- test/diy-cases/001_002_crypto.sysu.c.out 是 task1 的标准答案（clang -dump-tokens 格式，1056 行）；对应输入是 test/cases/mini-performance/crypto.sysu.c 经 clang -E 预处理后的内容。原仓库没有 001_002_crypto.sysu.c 这个源文件，现已按 `<build>/test/task0/mini-performance/crypto.sysu.c` 补到 test/diy-cases/（4KB，以 `# 1 "..."` 行指令开头）
+- task1 参数：`task1 <input> <output>`（task/1/antlr/main.cpp:324）；argv[2] 是输出文件且被 ofstream 覆盖，绝不能传 .out 答案文件
