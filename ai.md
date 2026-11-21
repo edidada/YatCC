@@ -151,5 +151,6 @@ PrerequisiteKnowledge
 - [bison.md](bison.md) —— Bison 3.8.2：`%union`/`%type`/`%token`、`$$`/`$n` 语义动作、构造 ASG、`par::gMgr`/`Symtbl`、分层规则表达优先级、`bison_target()`
 - [cmake.md](cmake.md) —— CMake/构建工具链：`include(config.cmake)`、`find_package` 两种模式、`configure_file(@ONLY)`、INTERFACE IMPORTED 目标、`add_custom_target`、CTest + `add_test`、切换实现必须换 build 目录
 - [python.md](python.md) —— Python 3.12：`find_package(Python3)`、评测框架 `CasesHelper`/`ScoreReport`、`score.py` 的 `ctest -R` 套路、`subprocess`/正则、`SYsULexer.py` 代码生成、LLM 侧 `openai` 与响应清洗
+- [sysu.md](sysu.md) —— SYsU / SysY 语言规范与版本：**2026-11 最新版 SysY2026**（向量类型、float、ARMv8-A/RISC-V、Ubuntu 24.04+Clang-18、决赛现场变更）对比**本项目用的 SYsU**（int-only C 子集、`.sysu.c` + clang 预处理）与 **SysY2022**（task5 前端、`__SYSY 202203L`）；含版本演进、对照表与升级到 2026 需要补什么
 
 

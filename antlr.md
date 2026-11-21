@@ -37,3 +37,5 @@
 - **token 别名要自己映射**：ANTLR 的符号名（`Int`、`LeftParen`）与 clang 的 `int`、`l_paren` 不同，靠 `unordered_map` 转换（`task/1/antlr/main.cpp:178-206`）。
 - **cpp-runtime 自带 googletest**：默认 `ANTLR_BUILD_CPP_TESTS=ON` 会 FetchContent 旧版 googletest，其 `cmake_minimum_required(VERSION 2.8.12)` 被 CMake 4.x 拒绝；`antlr/setup.sh` 已加 `-DANTLR_BUILD_CPP_TESTS=OFF`。
 - **切换实现要换 build 目录**：`TASK1_WITH` 决定 `add_subdirectory(flex)` 还是 `add_subdirectory(antlr)`，CMake 缓存会冲突，CI 用 `build-flex` / `build-antlr` 分开。
+
+> 这些 `.g4` 描述的是哪种语言、为什么 task5 的 `SysY2022.g4` 带 `float` 而 `SYsULexer.g4` 不带，以及 2026 年最新版规范的差异，见 [sysu.md](sysu.md)。
