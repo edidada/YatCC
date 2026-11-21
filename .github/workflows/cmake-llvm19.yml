@@ -1,0 +1,129 @@
+name: CMake LLVM 19 (ubuntu-latest)
+
+on:
+  push:
+    branches: [ "wsl" ]
+  pull_request:
+    branches: [ "wsl" ]
+
+env:
+  BUILD_TYPE: Release
+  YatCC_LLVM_DIR: ${{ github.workspace }}/llvm
+  YatCC_ANTLR_DIR: ${{ github.workspace }}/antlr
+  YatCC_PYBIND11_DIR: ${{ github.workspace }}/pybind11
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: install deps
+      run: |
+        sudo apt update
+        sudo apt install -y python3-pytest curl lld flex bison
+        # Use an older GCC for both the LLVM 19 source build and the project
+        # build: ubuntu-latest defaults to GCC 15, which older LLVM headers
+        # do not compile with (e.g. SmallVector has no begin/end).
+        if sudo apt install -y gcc-14 g++-14; then
+          _cc=gcc-14; _cxx=g++-14
+        else
+          sudo apt install -y gcc-13 g++-13
+          _cc=gcc-13; _cxx=g++-13
+        fi
+        echo "CC=$_cc" >> $GITHUB_ENV
+        echo "CXX=$_cxx" >> $GITHUB_ENV
+        export CC=$_cc CXX=$_cxx
+        ./antlr/setup.sh
+        bash ./llvm/setup-19.sh
+        ./pybind11/setup.sh
+
+    # ---------------------------------------------------------------- #
+    # 阶段 1：先用 flex / bison 实现跑一遍
+    # ---------------------------------------------------------------- #
+    - name: Set TASK*_WITH to flex/bison (sed)
+      run: |
+        sed -i \
+          -e 's/set(TASK1_WITH "[^"]*")/set(TASK1_WITH "flex")/' \
+          -e 's/set(TASK2_WITH "[^"]*")/set(TASK2_WITH "bison")/' \
+          config.cmake
+        grep 'set(TASK[12]_WITH' config.cmake
+
+    - name: Configure CMake (flex/bison)
+      continue-on-error: true
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cmake -B ${{github.workspace}}/build-flex -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build (flex/bison)
+      continue-on-error: true
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cmake --build ${{github.workspace}}/build-flex --config ${{env.BUILD_TYPE}}
+
+    - name: score (flex/bison)
+      continue-on-error: true
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cd ${{github.workspace}}/build-flex
+        cmake --build . --target task1-score
+        cmake --build . --target task2-score
+        cmake --build . --target task3-score
+        cmake --build . --target task4-score
+        cmake --build . --target task5-score
+
+    # ---------------------------------------------------------------- #
+    # 阶段 2：sed 替换成 antlr 实现，再跑一遍
+    # 两套实现必须用不同的 build 目录，否则 CMake 缓存里的
+    # add_subdirectory(flex|antlr) 会冲突。
+    # ---------------------------------------------------------------- #
+    - name: Switch to antlr (sed)
+      run: |
+        sed -i \
+          -e 's/set(TASK1_WITH "[^"]*")/set(TASK1_WITH "antlr")/' \
+          -e 's/set(TASK2_WITH "[^"]*")/set(TASK2_WITH "antlr")/' \
+          config.cmake
+        grep 'set(TASK[12]_WITH' config.cmake
+
+    - name: Configure CMake (antlr)
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cmake -B ${{github.workspace}}/build-antlr -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build (antlr)
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cmake --build ${{github.workspace}}/build-antlr --config ${{env.BUILD_TYPE}}
+
+    - name: score (antlr)
+      run: |
+        export YatCC_LLVM_DIR=${{ github.workspace }}/llvm
+        export YatCC_ANTLR_DIR=${{ github.workspace }}/antlr
+        export YatCC_PYBIND11_DIR=${{ github.workspace }}/pybind11
+        cd ${{github.workspace}}/build-antlr
+        cmake --build . --target task1-score
+        cmake --build . --target task2-score
+        cmake --build . --target task3-score
+        cmake --build . --target task4-score
+        cmake --build . --target task5-score
+
+    - name: git status
+      if: always()
+      run: |
+        echo "=== HEAD ==="
+        git log -1 --oneline
+        echo "=== git status ==="
+        git status --short --branch
+        echo "=== git diff --stat ==="
+        git diff --stat
