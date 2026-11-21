@@ -73,3 +73,13 @@ jobs:
         cmake --build . --target task3-score
         cmake --build . --target task4-score
         cmake --build . --target task5-score
+
+    - name: git status
+      if: always()
+      run: |
+        echo "=== HEAD ==="
+        git log -1 --oneline
+        echo "=== git status ==="
+        git status --short --branch
+        echo "=== git diff --stat ==="
+        git diff --stat
