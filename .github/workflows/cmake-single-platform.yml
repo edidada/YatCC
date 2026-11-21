@@ -28,7 +28,19 @@ jobs:
     - name: install deps
       run: |
         sudo apt update
-        sudo apt install -y python3-pytest curl lld llvm-18 llvm-18-dev clang-18
+        sudo apt install -y python3-pytest curl lld llvm-18 llvm-18-dev clang-18 flex bison
+        # LLVM 18 headers do not compile with GCC 15 (ubuntu-latest default),
+        # e.g. SmallVector has no member named begin/end. Use an older GCC for
+        # both the LLVM source build and the project build.
+        if sudo apt install -y gcc-14 g++-14; then
+          _cc=gcc-14; _cxx=g++-14
+        else
+          sudo apt install -y gcc-13 g++-13
+          _cc=gcc-13; _cxx=g++-13
+        fi
+        echo "CC=$_cc" >> $GITHUB_ENV
+        echo "CXX=$_cxx" >> $GITHUB_ENV
+        export CC=$_cc CXX=$_cxx
         ./antlr/setup.sh
         ./llvm/setup.sh
         ./pybind11/setup.sh
