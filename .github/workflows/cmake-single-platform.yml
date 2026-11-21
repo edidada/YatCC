@@ -11,9 +11,9 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
-  YatCC_LLVM_DIR: ${{ github.workspace }}/llvm/install
-  YatCC_ANTLR_DIR: ${{ github.workspace }}/antlr/install
-  YatCC_PYBIND11_DIR: ${{ github.workspace }}/pybind11/install
+  YatCC_LLVM_DIR: ${{ github.workspace }}/llvm
+  YatCC_ANTLR_DIR: ${{ github.workspace }}/antlr
+  YatCC_PYBIND11_DIR: ${{ github.workspace }}/pybind11
 
 jobs:
   build:

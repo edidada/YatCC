@@ -23,7 +23,10 @@ fi
 
 unzip cpp-runtime.zip -d source
 mkdir build install
+# ANTLR's own tests FetchContent an old googletest (cmake_minimum_required < 3.5)
+# that CMake 4.x refuses to configure; we only need the runtime library here.
 cmake source -B build -G Ninja \
   -DCMAKE_INSTALL_PREFIX=$(realpath install) \
-  -DANTLR4_INSTALL=ON
+  -DANTLR4_INSTALL=ON \
+  -DANTLR_BUILD_CPP_TESTS=OFF
 cmake --build build --target install

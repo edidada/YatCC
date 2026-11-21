@@ -29,8 +29,12 @@ set(TASK5_REVIVE ON)
 # ############################################################################ #
 
 # ANTLR4
+# 优先使用 -D 传入的值，否则回退到环境变量（CI / 开发容器通过环境变量指定）
+if(NOT YatCC_ANTLR_DIR)
+  set(YatCC_ANTLR_DIR "$ENV{YatCC_ANTLR_DIR}")
+endif()
 set(_antlr_dir "${YatCC_ANTLR_DIR}")
-message("env YatCC_ANTLR_DIR ${$ENV{YatCC_ANTLR_DIR}}")
+message("env YatCC_ANTLR_DIR $ENV{YatCC_ANTLR_DIR}")
 message("YatCC_ANTLR_DIR ${YatCC_ANTLR_DIR}")
 message("ANTLR目录为 ${_antlr_dir}")
 set(antlr4-runtime_DIR "${_antlr_dir}/install/lib/cmake/antlr4-runtime")
@@ -38,6 +42,9 @@ set(antlr4-generator_DIR "${_antlr_dir}/install/lib/cmake/antlr4-generator")
 set(ANTLR4_JAR_LOCATION "${_antlr_dir}/antlr.jar")
 
 # LLVM 和 Clang
+if(NOT YatCC_LLVM_DIR)
+  set(YatCC_LLVM_DIR "$ENV{YatCC_LLVM_DIR}")
+endif()
 set(_llvm_dir "${YatCC_LLVM_DIR}")
 message("LLVM目录为 ${_llvm_dir}")
 set(LLVM_DIR "${_llvm_dir}/install/lib/cmake/llvm")
@@ -46,6 +53,9 @@ set(CLANG_EXECUTABLE "${_llvm_dir}/install/bin/clang")
 set(CLANG_PLUS_EXECUTABLE "${_llvm_dir}/install/bin/clang++")
 
 # PYBIND11
+if(NOT YatCC_PYBIND11_DIR)
+  set(YatCC_PYBIND11_DIR "$ENV{YatCC_PYBIND11_DIR}")
+endif()
 set(_pybind11_dir "${YatCC_PYBIND11_DIR}")
 message("PYBIND11目录为 ${_pybind11_dir}")
 set(pybind11_DIR "${_pybind11_dir}/install/share/cmake/pybind11")
