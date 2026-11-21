@@ -140,3 +140,16 @@ CMake targets
 17. Python3 3.12.3：根 CMakeLists.txt:14 `find_package(Python3 COMPONENTS Interpreter Development REQUIRED)`，供评测脚本（common.py / answer.py / score.py）、SYsULexer.py 生成 tokens 头，以及 pybind11 embed
 18. 构建与测试工具：CMake 3.28.3、Ninja 1.11.1、lld 18.1.3、CTest、GCC 13.3.0（编译 LLVM 源码）、系统 clang 18.1.3（当前项目 CMAKE_C/CXX_COMPILER）；CI 另装 python3-pytest（pybind11 的 check 用）与 curl
 
+PrerequisiteKnowledge
+## 预备知识：各库知识点速查
+每个文档只讲**本项目实际用到的知识点**（具体 API、代码位置、踩过的坑），不是库的完整教程。版本与安装方式见上方「三方库」章节。
+
+- [antlr.md](antlr.md) —— ANTLR4 4.13.2：`.g4` 两类语法、`fragment`/`tokenVocab`/`-> skip`、表达式优先级分层、C++ Runtime 的 `ANTLRInputStream`/`CommonTokenStream`/`Vocabulary`、Visitor 模式、`antlr4_generate()`；`#line` 行号偏移
+- [llvm.md](llvm.md) —— LLVM/Clang 18.1.8：IR 层次、`IRBuilder<>` 指令生成、短路求值与 if/while 的基本块布局、`alloca`、Opaque Pointers、新 PassManager（PassBuilder / O3 管线 / PassInfoMixin / AnalysisInfoMixin）、`verifyModule`、clang 预处理与标准答案
+- [pybind11.md](pybind11.md) —— pybind11 2.13.6 嵌入模式：`scoped_interpreter`、`module_::import`、`py::object`/`str`/`list`/`dict`、`"name"_a` 关键字参数、`**params`、`TASK4_LLM`/`TASK5_LLM` 条件编译
+- [flex.md](flex.md) —— Flex 2.6.4：`.l` 三段结构、`%option`、`yytext`/`yyleng`/`yylineno`、`yylex()` 主循环、`<<EOF>>`、`Id` 枚举与 `kTokenNames`、`flex_target()`
+- [bison.md](bison.md) —— Bison 3.8.2：`%union`/`%type`/`%token`、`$$`/`$n` 语义动作、构造 ASG、`par::gMgr`/`Symtbl`、分层规则表达优先级、`bison_target()`
+- [cmake.md](cmake.md) —— CMake/构建工具链：`include(config.cmake)`、`find_package` 两种模式、`configure_file(@ONLY)`、INTERFACE IMPORTED 目标、`add_custom_target`、CTest + `add_test`、切换实现必须换 build 目录
+- [python.md](python.md) —— Python 3.12：`find_package(Python3)`、评测框架 `CasesHelper`/`ScoreReport`、`score.py` 的 `ctest -R` 套路、`subprocess`/正则、`SYsULexer.py` 代码生成、LLM 侧 `openai` 与响应清洗
+
+
