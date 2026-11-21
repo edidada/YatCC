@@ -107,3 +107,36 @@ CMake targets
 ### 001_002_crypto.sysu.c 与 task1 参数
 - test/diy-cases/001_002_crypto.sysu.c.out 是 task1 的标准答案（clang -dump-tokens 格式，1056 行）；对应输入是 test/cases/mini-performance/crypto.sysu.c 经 clang -E 预处理后的内容。原仓库没有 001_002_crypto.sysu.c 这个源文件，现已按 `<build>/test/task0/mini-performance/crypto.sysu.c` 补到 test/diy-cases/（4KB，以 `# 1 "..."` 行指令开头）
 - task1 参数：`task1 <input> <output>`（task/1/antlr/main.cpp:324）；argv[2] 是输出文件且被 ofstream 覆盖，绝不能传 .out 答案文件
+
+三方库
+## 项目用到的三方库
+版本以本仓库当前 WSL 环境（cmake-build-debug-wsl24_clang）实配为准。三个自编译依赖由仓库根各目录的 setup.sh 装到各自的 install/，再由 config.cmake 的 YatCC_ANTLR_DIR / YatCC_LLVM_DIR / YatCC_PYBIND11_DIR（不带 /install）指向。
+
+### flex
+1. 版本 2.6.4（/usr/bin/flex）；`find_package(FLEX 2.6)` 见 task/CMakeLists.txt:1
+2. 来源：系统 apt / 预装，不经 setup.sh
+3. 用途：task1 的 flex 分支，由 .l 规则生成 C 词法分析器；当前 config.cmake 的 TASK1_WITH = antlr，该分支未启用
+
+### bison
+4. 版本 3.8.2（/usr/bin/bison）；`find_package(BISON 3.8)` 见 task/CMakeLists.txt:2
+5. 来源：系统 apt / 预装；仓库根的 install_bison.sh 是给 macOS 从源码编译 3.8.2 的备用脚本（WSL 用不到）
+6. 用途：task2 的 bison 分支生成语法分析器；当前 TASK2_WITH = antlr，未启用
+
+### antlr
+7. 版本 4.13.2：antlr-4.13.2-complete.jar（Java 生成器）+ antlr4-cpp-runtime-4.13.2（C++ 运行时），由 antlr/setup.sh 下载并编译，装到 antlr/install
+8. CMake 引入：`find_package(antlr4-runtime 4.13)` / `find_package(antlr4-generator 4.13)`（task/CMakeLists.txt:4-5）；config.cmake:36-38 指定两个 xxx_DIR 与 ANTLR4_JAR_LOCATION
+9. 组成：生成期 antlr.jar + Java，链接期 antlr4_static 静态库；`antlr4_generate()` 宏把 .g4 编译成 C++ lexer/parser 源码
+10. 用途：task1（SYsULexer.g4）、task2（SYsUParser.g4）、task5 前端（SysY2022Lexer/Parser）；cpp-runtime 附带 libgtest.a / libgmock.a，项目未直接使用
+11. 依赖 Java 11.0.33（antlr4-generator 内部 find_package(Java)，跑 jar 必需）
+
+### llvm / clang
+12. 版本 18.1.8：由 llvm/setup.sh 从 llvm-18.1.8.src / clang-18.1.8.src / cmake-18.1.8.src 源码编译（Debug、X86、LLVM_BUILD_LLVM_DYLIB=ON、LLVM_USE_LINKER=lld），装到 llvm/install（约 21G，libLLVM.so.18.1 约 1.6G）
+13. CMake 引入：config.cmake:41-46 给出 LLVM_DIR / LLVM_INSTALL_DIR / CLANG_EXECUTABLE / CLANG_PLUS_EXECUTABLE；task/CMakeLists.txt:11-17 定义 INTERFACE IMPORTED 目标 LLVM，链接 libLLVM.so
+14. 用途：task2（llvm/Support/JSON 序列化 ASG）、task3（IRBuilder 生成 LLVM IR / Verifier）、task4（PassBuilder、Mem2Reg、ConstantFolding、StaticCallCounter 等 Pass）、task5（IR 与优化）；clang/clang++ 还被评测用于 task0-answer 的 clang -E 预处理、task1-answer 的 clang -cc1 -dump-tokens 生成标准答案，以及编译 test-rtlib
+15. 系统另装了 apt 的 llvm-18 / clang-18（18.1.3），只作工具链/备用；项目实际链接的是源码编译的 18.1.8
+
+### 其他三方依赖
+16. pybind11 2.13.6：pybind11/setup.sh 安装，find_package(pybind11 2.13.6)；pybind11::embed 供 task4-llm / task5-llm 内嵌 Python 调用大模型
+17. Python3 3.12.3：根 CMakeLists.txt:14 `find_package(Python3 COMPONENTS Interpreter Development REQUIRED)`，供评测脚本（common.py / answer.py / score.py）、SYsULexer.py 生成 tokens 头，以及 pybind11 embed
+18. 构建与测试工具：CMake 3.28.3、Ninja 1.11.1、lld 18.1.3、CTest、GCC 13.3.0（编译 LLVM 源码）、系统 clang 18.1.3（当前项目 CMAKE_C/CXX_COMPILER）；CI 另装 python3-pytest（pybind11 的 check 用）与 curl
+
