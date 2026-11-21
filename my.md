@@ -941,3 +941,287 @@ helper1 3
 4. ✅ 通过CMake构建系统管理
 
 这些示例程序展示了编译器优化的核心技术，不依赖LLVM库，使用纯C++实现，便于学习和理解。
+====================[ Build | task1-score | Debug-WSL24_clang ]=================
+/usr/bin/cmake --build /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang --target task1-score -j 14
+[0/3] cd /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0 && /usr/bin/python3 /mnt/d/develops/git/github/cpp/YatCC/test/task0/answer.py /mnt/d/develops/git/github/cpp/YatCC/test/cases /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0/cases.txt /mnt/d/develops/git/github/cpp/YatCC/llvm/install/bin/clang /mnt/d/develops/git/github/cpp/YatCC/test/rtlib
+测例源码目录 /mnt/d/develops/git/github/cpp/YatCC/test/cases
+输出目录 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0
+测例表路径 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0/cases.txt
+Clang 程序路径 /mnt/d/develops/git/github/cpp/YatCC/llvm/install/bin/clang
+运行时库路径 /mnt/d/develops/git/github/cpp/YatCC/test/rtlib
+禁用缓存机制 False
+
+测例表已缓存，什么都不用做
+[1/3] cd /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1 && /usr/bin/python3 /mnt/d/develops/git/github/cpp/YatCC/test/task1/answer.py /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/cases.txt /mnt/d/develops/git/github/cpp/YatCC/llvm/install/bin/clang /mnt/d/develops/git/github/cpp/YatCC/test/rtlib
+测例源码目录 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task0
+输出目录 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1
+测例表路径 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/cases.txt
+Clang 程序路径 /mnt/d/develops/git/github/cpp/YatCC/llvm/install/bin/clang
+运行时库路径 /mnt/d/develops/git/github/cpp/YatCC/test/rtlib
+禁用缓存机制 False
+
+加载测例表...完成
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/000_main.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/001_var_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/002_var_defn2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/003_var_defn3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/004_const_var_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/005_const_var_defn2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/006_const_var_defn3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/007_comment1.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/008_comment2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/009_hex_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/010_hex_oct_add.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/011_add.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/012_add2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/013_addc.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/014_sub.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/015_sub2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/016_subc.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/017_mul.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/018_mulc.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/019_div.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/020_divc.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/021_mod.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/022_rem.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/023_op_priority1.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/024_op_priority2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/025_op_priority3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/026_arr_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/027_arr_defn2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/028_arr_defn3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/029_const_array_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/030_func_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/031_var_defn_func.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/032_if.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/033_if2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/034_if_test1.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/035_if_test2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/036_if_test3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/037_if_test4.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/038_if_test5.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/039_while_if_test1.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/040_while_if_test2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/041_while_if_test3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/042_while_test1.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/043_while_test2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/044_while_test3.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/045_break.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/046_continue.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/047_op_priority5.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/048_op_priority4.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/049_unary_op.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/050_unary_op2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/051_logi_assign.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/052_stmt_expr.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/054_assign_complex_expr.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/055_if_complex_expr.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/056_short_circuit.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/057_short_circuit2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/058_scope.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/059_sort_test1.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/060_sort_test7.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/061_empty_stmt.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/062_side_effect.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/063_nested_calls2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/064_while_if.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-backend/000_main.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-backend/001_var_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-backend/005_const_var_defn2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-backend/026_arr_defn.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-backend/027_arr_defn2.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-backend/032_if.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-performance/fft.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/llm-performance/mm.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/bitset.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/crypto.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/dead-code-elimination.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/fft.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/hoist.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/if-combine.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/instruction-combining.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/integer-divide-optimization.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/mm.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/algebraic-identity.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/bitset.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/const-propagation.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/crypto.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/dead-code-elimination.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/dead-storage-elimination.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/fft.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/hoist.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/if-combine.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/instruction-combining.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/integer-divide-optimization.sysu.c/answer.txt ... OK
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/performance/mm.sysu.c/answer.txt ... OK
+[2/3] cd /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1 && /usr/bin/python3 /mnt/d/develops/git/github/cpp/YatCC/test/task1/score.py /mnt/d/develops/git/github/cpp/YatCC/test/cases /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/cases.txt /usr/bin/ctest 3
+测例目录 /mnt/d/develops/git/github/cpp/YatCC/test/cases
+测评输出目录 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1
+测例表路径 /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/cases.txt
+CTest 程序路径 /usr/bin/ctest
+日志等级 3
+运行单个测例 None
+
+加载测例表...完成
+运行 CTest 获取结果...
+CTest 运行输出： /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/ctest.stdout /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/ctest.stderr
+完成
+
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/000_main.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/001_var_defn.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/002_var_defn2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/003_var_defn3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/004_const_var_defn.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/005_const_var_defn2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/006_const_var_defn3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/007_comment1.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/008_comment2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/009_hex_defn.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-0/010_hex_oct_add.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/011_add.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/012_add2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/013_addc.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/014_sub.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/015_sub2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/016_subc.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/017_mul.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/018_mulc.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/019_div.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/020_divc.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/021_mod.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/022_rem.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/023_op_priority1.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/024_op_priority2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-1/025_op_priority3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/026_arr_defn.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/027_arr_defn2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/028_arr_defn3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/029_const_array_defn.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/030_func_defn.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-2/031_var_defn_func.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/032_if.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/033_if2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/034_if_test1.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/035_if_test2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/036_if_test3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/037_if_test4.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/038_if_test5.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/039_while_if_test1.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/040_while_if_test2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/041_while_if_test3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/042_while_test1.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/043_while_test2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/044_while_test3.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/045_break.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/046_continue.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/047_op_priority5.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/048_op_priority4.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/049_unary_op.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/050_unary_op2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/051_logi_assign.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/052_stmt_expr.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/054_assign_complex_expr.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/055_if_complex_expr.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/056_short_circuit.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/057_short_circuit2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/058_scope.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/059_sort_test1.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/060_sort_test7.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/061_empty_stmt.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/062_side_effect.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/063_nested_calls2.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/functional-3/064_while_if.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/bitset.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/crypto.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/dead-code-elimination.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/fft.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/hoist.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/if-combine.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/instruction-combining.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/integer-divide-optimization.sysu.c/score.txt ... [PASS]
+/mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/mini-performance/mm.sysu.c/score.txt ... [PASS]
+
+================================================================================
+functional-0/000_main.sysu.c .................................. 100.00/100.00
+functional-0/001_var_defn.sysu.c .............................. 100.00/100.00
+functional-0/002_var_defn2.sysu.c ............................. 100.00/100.00
+functional-0/003_var_defn3.sysu.c ............................. 100.00/100.00
+functional-0/004_const_var_defn.sysu.c ........................ 100.00/100.00
+functional-0/005_const_var_defn2.sysu.c ....................... 100.00/100.00
+functional-0/006_const_var_defn3.sysu.c ....................... 100.00/100.00
+functional-0/007_comment1.sysu.c .............................. 100.00/100.00
+functional-0/008_comment2.sysu.c .............................. 100.00/100.00
+functional-0/009_hex_defn.sysu.c .............................. 100.00/100.00
+functional-0/010_hex_oct_add.sysu.c ........................... 100.00/100.00
+functional-1/011_add.sysu.c ................................... 100.00/100.00
+functional-1/012_add2.sysu.c .................................. 100.00/100.00
+functional-1/013_addc.sysu.c .................................. 100.00/100.00
+functional-1/014_sub.sysu.c ................................... 100.00/100.00
+functional-1/015_sub2.sysu.c .................................. 100.00/100.00
+functional-1/016_subc.sysu.c .................................. 100.00/100.00
+functional-1/017_mul.sysu.c ................................... 100.00/100.00
+functional-1/018_mulc.sysu.c .................................. 100.00/100.00
+functional-1/019_div.sysu.c ................................... 100.00/100.00
+functional-1/020_divc.sysu.c .................................. 100.00/100.00
+functional-1/021_mod.sysu.c ................................... 100.00/100.00
+functional-1/022_rem.sysu.c ................................... 100.00/100.00
+functional-1/023_op_priority1.sysu.c .......................... 100.00/100.00
+functional-1/024_op_priority2.sysu.c .......................... 100.00/100.00
+functional-1/025_op_priority3.sysu.c .......................... 100.00/100.00
+functional-2/026_arr_defn.sysu.c .............................. 100.00/100.00
+functional-2/027_arr_defn2.sysu.c ............................. 100.00/100.00
+functional-2/028_arr_defn3.sysu.c ............................. 100.00/100.00
+functional-2/029_const_array_defn.sysu.c ...................... 100.00/100.00
+functional-2/030_func_defn.sysu.c ............................. 100.00/100.00
+functional-2/031_var_defn_func.sysu.c ......................... 100.00/100.00
+functional-3/032_if.sysu.c .................................... 100.00/100.00
+functional-3/033_if2.sysu.c ................................... 100.00/100.00
+functional-3/034_if_test1.sysu.c .............................. 100.00/100.00
+functional-3/035_if_test2.sysu.c .............................. 100.00/100.00
+functional-3/036_if_test3.sysu.c .............................. 100.00/100.00
+functional-3/037_if_test4.sysu.c .............................. 100.00/100.00
+functional-3/038_if_test5.sysu.c .............................. 100.00/100.00
+functional-3/039_while_if_test1.sysu.c ........................ 100.00/100.00
+functional-3/040_while_if_test2.sysu.c ........................ 100.00/100.00
+functional-3/041_while_if_test3.sysu.c ........................ 100.00/100.00
+functional-3/042_while_test1.sysu.c ........................... 100.00/100.00
+functional-3/043_while_test2.sysu.c ........................... 100.00/100.00
+functional-3/044_while_test3.sysu.c ........................... 100.00/100.00
+functional-3/045_break.sysu.c ................................. 100.00/100.00
+functional-3/046_continue.sysu.c .............................. 100.00/100.00
+functional-3/047_op_priority5.sysu.c .......................... 100.00/100.00
+functional-3/048_op_priority4.sysu.c .......................... 100.00/100.00
+functional-3/049_unary_op.sysu.c .............................. 100.00/100.00
+functional-3/050_unary_op2.sysu.c ............................. 100.00/100.00
+functional-3/051_logi_assign.sysu.c ........................... 100.00/100.00
+functional-3/052_stmt_expr.sysu.c ............................. 100.00/100.00
+functional-3/054_assign_complex_expr.sysu.c ................... 100.00/100.00
+functional-3/055_if_complex_expr.sysu.c ....................... 100.00/100.00
+functional-3/056_short_circuit.sysu.c ......................... 100.00/100.00
+functional-3/057_short_circuit2.sysu.c ........................ 100.00/100.00
+functional-3/058_scope.sysu.c ................................. 100.00/100.00
+functional-3/059_sort_test1.sysu.c ............................ 100.00/100.00
+functional-3/060_sort_test7.sysu.c ............................ 100.00/100.00
+functional-3/061_empty_stmt.sysu.c ............................ 100.00/100.00
+functional-3/062_side_effect.sysu.c ........................... 100.00/100.00
+functional-3/063_nested_calls2.sysu.c ......................... 100.00/100.00
+functional-3/064_while_if.sysu.c .............................. 100.00/100.00
+mini-performance/bitset.sysu.c ................................ 100.00/100.00
+mini-performance/crypto.sysu.c ................................ 100.00/100.00
+mini-performance/dead-code-elimination.sysu.c ................. 100.00/100.00
+mini-performance/fft.sysu.c ................................... 100.00/100.00
+mini-performance/hoist.sysu.c ................................. 100.00/100.00
+mini-performance/if-combine.sysu.c ............................ 100.00/100.00
+mini-performance/instruction-combining.sysu.c ................. 100.00/100.00
+mini-performance/integer-divide-optimization.sysu.c ........... 100.00/100.00
+mini-performance/mm.sysu.c .................................... 100.00/100.00
+
+task1
+总分（加权）：100.00/100.00
+================================================================================
+
+成绩单已保存： /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/score.txt
+JSON 格式： /mnt/d/develops/git/github/cpp/YatCC/cmake-build-debug-wsl24_clang/test/task1/score.json
+
+Build finished
+
